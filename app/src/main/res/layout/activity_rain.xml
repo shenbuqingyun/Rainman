@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".RainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="60dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="7sp"
+                android:text="@string/rain_poetry"
+                android:textColor="@color/berry_blue"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.astuetz.PagerSlidingTabStrip
+                android:id="@+id/activity_main_tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fafafa"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="#333333"
+                android:textSize="13sp" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/activity_main_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true">
+
+            </android.support.v4.view.ViewPager>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.love.rain.view.SimplePanel
+        android:id="@+id/activity_main_panel_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.love.rain.view.SimplePanel>
+</FrameLayout>
