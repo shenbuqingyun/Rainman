@@ -11,6 +11,8 @@ import android.view.MotionEvent;
 import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 
+import com.love.rain.util.LogUtils;
+
 
 /**
  * 作者    Chin_style
@@ -29,7 +31,7 @@ import android.widget.FrameLayout;
 public class SimplePanel extends FrameLayout {
     private static final int SCROLL_TOP = 0;
     private static final float DEFAULT_SLIDE_DISTANCE = 200;
-    private float ratio = (float) 0.618;
+    public float ratio = (float) 0.382;
     private static int DEFAULT_CLOSE_DURATION = 250;
     private static int DEFAULT_OPEN_DURATION = 300;
 
@@ -47,20 +49,24 @@ public class SimplePanel extends FrameLayout {
     private ObjectAnimator mFadeInAnimator;
     private SimplePanelListener mSimplePanelListener;
 
+    private int height;
     public SimplePanel(Context context) {
         super(context);
+        height = getResources().getDisplayMetrics().heightPixels ;
     }
 
     public SimplePanel(Context context, AttributeSet attrs) {
         super(context, attrs);
+        height = getResources().getDisplayMetrics().heightPixels ;
     }
 
     public SimplePanel(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        height = getResources().getDisplayMetrics().heightPixels ;
     }
 
-    private float getSlideBound() {
-        return getHeight() * ratio;
+    public float getSlideBound() {
+        return height * ratio;
     }
 
     @Override
@@ -146,7 +152,8 @@ public class SimplePanel extends FrameLayout {
     }
 
     private AnimatorSet setAnimatorOpenSet() {
-        int scrollTo = (int) (getHeight() - getSlideBound());
+        height = getResources().getDisplayMetrics().heightPixels ;
+        int scrollTo = (int) (height * ratio);
         mOpenAnimator = ValueAnimator.ofInt(getScrollY(), scrollTo);
 
         mOpenAnimator.setInterpolator(new OvershootInterpolator());
