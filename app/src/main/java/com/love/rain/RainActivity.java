@@ -9,10 +9,14 @@ import android.widget.LinearLayout;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.love.rain.adapter.ViewPagerFragmentAdapter;
+import com.love.rain.fragment.AboutFragment;
 import com.love.rain.fragment.AudioPlayerFragment;
 import com.love.rain.fragment.FrontPanelFragment;
+import com.love.rain.fragment.TimingFragment;
 import com.love.rain.util.LogUtils;
 import com.love.rain.view.SimplePanel;
+
+import java.lang.reflect.Field;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +38,7 @@ public class RainActivity extends AppCompatActivity {
     @BindView(R.id.activity_main_bottom_layout)
     LinearLayout mLinearLayout;
     private FrontPanelFragment mFrontPanelFragment;
+    private ViewPagerFragmentAdapter adapter;
     private int width, height;
     private float ratio = (float) 0.382;
     @Override
@@ -50,14 +55,31 @@ public class RainActivity extends AppCompatActivity {
                 .replace(R.id.activity_main_panel_layout, mFrontPanelFragment)
                 .commit();
 
-        String[] titles = {"雨声阵阵雨声阵阵", "延时睡眠延时睡眠", "应用相关应用相关",};
-        Fragment[] fragments = { new AudioPlayerFragment(),new AudioPlayerFragment(),new AudioPlayerFragment()};
-        ViewPagerFragmentAdapter adapter = new ViewPagerFragmentAdapter(getSupportFragmentManager(), fragments, titles);
+        String[] titles = {"雨声阵阵", "延时睡眠", "应用相关"};
+        Fragment[] fragments = { new AboutFragment(),new AudioPlayerFragment(),new TimingFragment()};
+        adapter = new ViewPagerFragmentAdapter(getSupportFragmentManager(), fragments, titles);
         ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) mLinearLayout.getLayoutParams();
         params.height = (int) (height*ratio);
-        LogUtils.d("height","RainActivity" + params.height);
         mLinearLayout.setLayoutParams(params);
         mViewPager.setAdapter(adapter);
+        setDefaultItem(1);
         mPagerSlidingTabStrip.setViewPager(mViewPager);
     }
+
+    //为ViewPager指定默认页
+    private void setDefaultItem(int position){
+        //我这里mViewpager是viewpager子类的实例。如果你是viewpager的实例，也可以这么干。
+        try {
+            Class c = Class.forName("android.support.v4.view.ViewPager");
+            Field field =c.getDeclaredField("mCurItem");
+            field.setAccessible(true);
+            field.setInt(mViewPager, position);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        adapter.notifyDataSetChanged();
+        mViewPager.setCurrentItem(position);
+    }
+
 }

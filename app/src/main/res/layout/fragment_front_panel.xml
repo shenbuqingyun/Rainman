@@ -2,11 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/front_panel_fragment_background">
+    android:background="@drawable/front_panel_fragment_background"
+    android:orientation="vertical">
 
     <Button
-        android:id="@+id/fragment_front_panel_testBtn"
+        android:id="@+id/fragment_front_panel_playBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="btn"/>
+        android:text="Play" />
+
+    <Button
+        android:id="@+id/fragment_front_panel_stopBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stop" />
+
+    <ImageView
+        android:id="@+id/fragment_front_panel_guide_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_margin="50dp"
+        android:src="@drawable/status_bar_pause_img" />
 </LinearLayout>

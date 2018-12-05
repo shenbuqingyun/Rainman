@@ -2,7 +2,7 @@ package com.love.rain.bean;
 
 /**
  * 作者    cpf
- * 时间    2018/12/4 10:26
+ * 时间    2018/12/4
  * 文件    Rainman
  * 描述
  */
