@@ -17,6 +17,14 @@
         android:layout_height="wrap_content"
         android:text="Stop" />
 
+    <TextView
+        android:id="@+id/fragment_front_panel_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/dark_blue"
+        android:textSize="20sp" />
+
     <ImageView
         android:id="@+id/fragment_front_panel_guide_img"
         android:layout_width="100dp"
@@ -24,4 +32,5 @@
         android:layout_gravity="center"
         android:layout_margin="50dp"
         android:src="@drawable/status_bar_pause_img" />
+
 </LinearLayout>

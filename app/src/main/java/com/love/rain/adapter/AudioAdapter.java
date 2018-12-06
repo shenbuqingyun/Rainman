@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.love.rain.R;
 import com.love.rain.bean.Audio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,7 +38,29 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
     }
 
     public AudioAdapter(List<Audio> audioList){
-        mAudioList = audioList;
+        mAudioList = new ArrayList<>();
+        initAudioList();
+    }
+
+    private void initAudioList(){
+        Audio audio0 = new Audio("audio_0",R.raw.audio_0);
+        mAudioList.add(audio0);
+        Audio audio1 = new Audio("audio_1",R.raw.audio_1);
+        mAudioList.add(audio1);
+        Audio audio2 = new Audio("audio_2",R.raw.audio_2);
+        mAudioList.add(audio2);
+        Audio audio3 = new Audio("audio_3",R.raw.audio_3);
+        mAudioList.add(audio3);
+        Audio audio4 = new Audio("audio_4",R.raw.audio_4);
+        mAudioList.add(audio4);
+        Audio audio5 = new Audio("audio_5",R.raw.audio_5);
+        mAudioList.add(audio5);
+        Audio audio6 = new Audio("audio_6",R.raw.audio_6);
+        mAudioList.add(audio6);
+        Audio audio7 = new Audio("audio_7",R.raw.audio_7);
+        mAudioList.add(audio7);
+        Audio audio8 = new Audio("audio_8",R.raw.audio_8);
+        mAudioList.add(audio8);
     }
 
     @NonNull
